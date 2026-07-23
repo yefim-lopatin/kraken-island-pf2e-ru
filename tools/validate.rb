@@ -15,7 +15,8 @@ EXPECTED_PACKS = {
   "act-one-items" => "Item",
   "act-one-journal" => "JournalEntry",
   "act-one-scenes" => "Scene",
-  "act-one-rumors" => "RollTable"
+  "act-one-rumors" => "RollTable",
+  "apertura-adventure" => "Adventure"
 }.freeze
 
 errors = []
@@ -78,16 +79,26 @@ if manifest
 
   packs = manifest["packs"]
   unless packs.is_a?(Array) && packs.length == EXPECTED_PACKS.length
-    errors << "module.json: нужны пять паков вертикального среза"
+    errors << "module.json: нужны пять content-паков и один Adventure pack"
   else
     actual_packs = packs.to_h { |pack| [pack["name"], pack["type"]] }
     errors << "module.json: состав паков не совпадает" unless actual_packs == EXPECTED_PACKS
     packs.each do |pack|
-      errors << "module.json: Adventure pack запрещён на этом этапе" if pack["type"] == "Adventure"
       errors << "module.json: неверный путь pack #{pack['name']}" unless pack["path"] == "packs/#{pack['name']}"
       errors << "module.json: pack #{pack['name']} должен зависеть от pf2e" unless pack["system"] == "pf2e"
     end
   end
+
+  quickstart_uuid = manifest.dig("quickstart", "adventures", "pf2e", "uuid")
+  expected_quickstart_uuid = "Compendium.#{EXPECTED_MODULE_ID}.apertura-adventure.Adventure.AperturaStart001"
+  errors << "module.json: неверный UUID Quickstart" unless quickstart_uuid == expected_quickstart_uuid
+
+  setup_media = Array(manifest["media"]).find { |entry| entry["type"] == "setup" }
+  errors << "module.json: отсутствует setup media" unless setup_media
+  cover_path = setup_media&.fetch("thumbnail", nil)
+  expected_cover = "modules/#{EXPECTED_MODULE_ID}/assets/apertura-quickstart.png"
+  errors << "module.json: неверная миниатюра Quickstart" unless cover_path == expected_cover
+  errors << "module.json: нет файла обложки" unless ROOT.join("assets", "apertura-quickstart.png").file?
 
   systems = manifest.dig("relationships", "systems")
   unless systems.is_a?(Array) && systems.length == 1
@@ -197,7 +208,7 @@ if errors.empty?
   puts "ПРОВЕРКА 1 — MANIFEST: ПРОЙДЕНА"
   puts "ПРОВЕРКА 2 — РЕЕСТР #{EXPECTED_DOCUMENT_COUNT} ДОКУМЕНТОВ АПЕРТУРЫ: ПРОЙДЕНА"
   puts(source_specs_verified ? "ПРОВЕРКА 2A — ВНЕШНИЕ СПЕЦИФИКАЦИИ: СВЕРЕНЫ" : "ПРОВЕРКА 2A — ВНЕШНИЕ СПЕЦИФИКАЦИИ: НЕ ВКЛЮЧЕНЫ В АВТОНОМНЫЙ МОДУЛЬ")
-  puts "ПРОВЕРКА 3 — ПЯТЬ CONTENT-ONLY PACK БЕЗ ADVENTURE И JAVASCRIPT: ПРОЙДЕНА"
+  puts "ПРОВЕРКА 3 — ПЯТЬ CONTENT-ПАКОВ, ADVENTURE QUICKSTART И НОЛЬ JAVASCRIPT: ПРОЙДЕНА"
   exit 0
 end
 

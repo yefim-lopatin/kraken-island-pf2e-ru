@@ -277,6 +277,28 @@ script = <<~'JAVASCRIPT'
     ownership: {default: 0}, flags: {[recipe.moduleId]: {designId: recipe.table.designId}}, _stats: stats(null)
   }];
 
+  const adventures = [{
+    _id: "AperturaStart001",
+    name: "Остров Кракена — Апертура",
+    img: `modules/${recipe.moduleId}/assets/apertura-quickstart.png`,
+    caption: "<p>Соль на пороге</p>",
+    description: "<p>Небольшое приключение для персонажей 1-го уровня в деревне Апертура: таверна, проклятый храм, причал и необязательный дом Хьюго.</p>",
+    actors: clone(actors),
+    combats: [],
+    items: clone(items),
+    journal: clone(journal),
+    scenes: clone(scenes),
+    tables: clone(tables),
+    macros: [],
+    cards: [],
+    playlists: [],
+    folders: [],
+    folder: null,
+    sort: 100000,
+    flags: {[recipe.moduleId]: {designId: "adventure-apertura-quickstart"}},
+    _stats: stats(null)
+  }];
+
   const buildRoot = path.join(root, `.pack-build-${process.pid}`);
   fs.rmSync(buildRoot, {recursive: true, force: true});
   fs.mkdirSync(buildRoot, {recursive: true});
@@ -304,16 +326,17 @@ script = <<~'JAVASCRIPT'
   await writePack("act-one-journal", "journal", journal, {pages: "pages", categories: "categories"});
   await writePack("act-one-scenes", "scenes", scenes, {drawings: "drawings", tokens: "tokens", levels: "levels", lights: "lights", notes: "notes", sounds: "sounds", regions: "regions", tiles: "tiles", walls: "walls"});
   await writePack("act-one-rumors", "tables", tables, {results: "results"});
+  await writePack("apertura-adventure", "adventures", adventures);
 
   const packsRoot = path.join(root, "packs");
   fs.mkdirSync(packsRoot, {recursive: true});
-  for (const name of ["act-one-actors", "act-one-items", "act-one-journal", "act-one-scenes", "act-one-rumors"]) {
+  for (const name of ["act-one-actors", "act-one-items", "act-one-journal", "act-one-scenes", "act-one-rumors", "apertura-adventure"]) {
     const target = path.join(packsRoot, name);
     fs.rmSync(target, {recursive: true, force: true});
     fs.renameSync(path.join(buildRoot, name), target);
   }
   fs.rmSync(buildRoot, {recursive: true, force: true});
-  console.log(JSON.stringify({actors: actors.length, items: items.length, journal: journal.length, scenes: scenes.length, tables: tables.length}));
+  console.log(JSON.stringify({actors: actors.length, items: items.length, journal: journal.length, scenes: scenes.length, tables: tables.length, adventures: adventures.length}));
 JAVASCRIPT
 
 stdout, stderr, status = Open3.capture3(
@@ -330,4 +353,4 @@ stdout, stderr, status = Open3.capture3(
 
 warn stderr unless stderr.empty?
 abort "Сборка паков завершилась с ошибкой" unless status.success?
-puts "ПАКИ АКТА I СОБРАНЫ: #{stdout.strip}"
+puts "ПАКИ АПЕРТУРЫ СОБРАНЫ: #{stdout.strip}"
