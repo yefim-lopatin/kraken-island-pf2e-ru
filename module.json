@@ -2,8 +2,11 @@
   "id": "kraken-island-pf2e-ru",
   "type": "module",
   "title": "Остров Кракена — PF2e Remaster",
-  "description": "Минимальный content-only каркас русскоязычного приключения для личного использования. Игровые документы и Adventure pack ещё не включены.",
-  "version": "0.0.1",
+  "description": "Небольшой content-only прототип приключения в деревне Апертура и её ближайшей области для личного тестирования в Foundry VTT.",
+  "version": "0.1.0",
+  "url": "https://github.com/yefim-lopatin/kraken-island-pf2e-ru",
+  "manifest": "https://github.com/yefim-lopatin/kraken-island-pf2e-ru/releases/latest/download/module.json",
+  "download": "https://github.com/yefim-lopatin/kraken-island-pf2e-ru/releases/download/v0.1.0/kraken-island-pf2e-ru.zip",
   "compatibility": {
     "minimum": "14.365",
     "maximum": "14"
@@ -19,5 +22,47 @@
         }
       }
     ]
-  }
+  },
+  "packs": [
+    {
+      "name": "act-one-actors",
+      "label": "Апертура — персонажи и опасность",
+      "path": "packs/act-one-actors",
+      "type": "Actor",
+      "system": "pf2e",
+      "ownership": { "PLAYER": "LIMITED", "ASSISTANT": "OWNER" }
+    },
+    {
+      "name": "act-one-items",
+      "label": "Апертура — сюжетные предметы",
+      "path": "packs/act-one-items",
+      "type": "Item",
+      "system": "pf2e",
+      "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }
+    },
+    {
+      "name": "act-one-journal",
+      "label": "Апертура — Соль на пороге",
+      "path": "packs/act-one-journal",
+      "type": "JournalEntry",
+      "system": "pf2e",
+      "ownership": { "PLAYER": "LIMITED", "ASSISTANT": "OWNER" }
+    },
+    {
+      "name": "act-one-scenes",
+      "label": "Апертура — сцены",
+      "path": "packs/act-one-scenes",
+      "type": "Scene",
+      "system": "pf2e",
+      "ownership": { "PLAYER": "NONE", "ASSISTANT": "OWNER" }
+    },
+    {
+      "name": "act-one-rumors",
+      "label": "Апертура — слухи",
+      "path": "packs/act-one-rumors",
+      "type": "RollTable",
+      "system": "pf2e",
+      "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }
+    }
+  ]
 }
