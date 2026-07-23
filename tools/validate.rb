@@ -8,6 +8,7 @@ ROOT = Pathname.new(__dir__).join("..").expand_path
 MANIFEST_PATH = ROOT.join("module.json")
 REGISTRY_PATH = ROOT.join("data", "document-registry.json")
 EXPECTED_MODULE_ID = "kraken-island-pf2e-ru"
+EXPECTED_VERSION = "0.2.1"
 EXPECTED_DOCUMENT_COUNT = 18
 EXPECTED_IMPLEMENTED_COUNT = 18
 EXPECTED_PACKS = {
@@ -69,10 +70,14 @@ if manifest
   errors << "module.json: отсутствуют поля #{missing.join(', ')}" unless missing.empty?
   errors << "module.json: неверный id" unless manifest["id"] == EXPECTED_MODULE_ID
   errors << "module.json: type должен быть module" unless manifest["type"] == "module"
+  errors << "module.json: version должен быть #{EXPECTED_VERSION}" unless manifest["version"] == EXPECTED_VERSION
+  expected_download = "https://github.com/yefim-lopatin/kraken-island-pf2e-ru/releases/download/v#{EXPECTED_VERSION}/kraken-island-pf2e-ru.zip"
+  errors << "module.json: download не соответствует версии #{EXPECTED_VERSION}" unless manifest["download"] == expected_download
   errors << "module.json: minimum должен быть 14.365" unless manifest.dig("compatibility", "minimum") == "14.365"
+  errors << "module.json: verified должен быть 14.365" unless manifest.dig("compatibility", "verified") == "14.365"
   errors << "module.json: maximum должен ограничивать поколение 14" unless manifest.dig("compatibility", "maximum") == "14"
 
-  %w[verified scripts esmodules].each do |forbidden_key|
+  %w[scripts esmodules].each do |forbidden_key|
     paths = collect_keys(manifest, forbidden_key)
     errors << "module.json: запрещено поле #{forbidden_key} (#{paths.join(', ')})" unless paths.empty?
   end
@@ -107,6 +112,7 @@ if manifest
     pf2e = systems.first
     errors << "module.json: системная зависимость должна быть pf2e" unless pf2e["id"] == "pf2e" && pf2e["type"] == "system"
     errors << "module.json: minimum PF2e должен быть 8.3.0" unless pf2e.dig("compatibility", "minimum") == "8.3.0"
+    errors << "module.json: maximum PF2e должен ограничивать поколение 8" unless pf2e.dig("compatibility", "maximum") == "8.999.999"
   end
 
   each_value(manifest) do |value, path|
