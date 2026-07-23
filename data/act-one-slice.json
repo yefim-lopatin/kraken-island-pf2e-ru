@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 1,
+  "moduleId": "kraken-island-pf2e-ru",
+  "coreVersion": "14.365",
+  "systemId": "pf2e",
+  "systemVersion": "8.3.0",
+  "licenseScope": "personal-use-prototype",
+  "actors": [
+    {
+      "_id": "AviPriest0000001",
+      "name": "Ави",
+      "designId": "actor-avi",
+      "sourceUuid": "Compendium.pf2e.pathfinder-npc-core.Actor.APn9B54hhRtr0oCQ",
+      "keepItemIds": ["n3jCGW9WDHnhi4Ky"],
+      "itemNames": {"n3jCGW9WDHnhi4Ky": "Кулак"},
+      "publicNotes": "<p>Жрец Апертуры и проводник героев к проклятому храму. В бою не участвует, если ему можно отступить.</p>"
+    },
+    {
+      "_id": "PirateCommon0001",
+      "name": "Пират-простолюдин",
+      "designId": "actor-pirate-commoner",
+      "sourceUuid": "Compendium.pf2e.pathfinder-npc-core.Actor.APn9B54hhRtr0oCQ",
+      "keepItemIds": ["n3jCGW9WDHnhi4Ky"],
+      "itemNames": {"n3jCGW9WDHnhi4Ky": "Кулак"},
+      "publicNotes": "<p>Несмертельный участник таверной драки. Не атакует лежащих и не преследует за пределами таверны.</p>"
+    },
+    {
+      "_id": "TempleSkelGrd001",
+      "name": "Скелет-страж храма",
+      "designId": "actor-temple-skeleton-guard",
+      "sourceUuid": "Compendium.pf2e.pathfinder-monster-core.Actor.trchDxbDR2TiPMxT",
+      "keepItemIds": ["jL9PDQ27Dz6UAMOH", "m25t326n1Ovt0t5U"],
+      "itemNames": {"jL9PDQ27Dz6UAMOH": "Скимитар", "m25t326n1Ovt0t5U": "Исцеление пустотой"},
+      "publicNotes": "<p>Хрупкий страж, связанный с храмовой haunt. Рассыпается после её полного отключения и не преследует за порогом.</p>"
+    },
+    {
+      "_id": "HugoRigger000001",
+      "name": "Хьюго",
+      "designId": "actor-hugo",
+      "sourceUuid": "Compendium.pf2e.pathfinder-npc-core.Actor.hBSGQAonirqUAHCP",
+      "keepItemIds": ["JVuhWGA9AXWasDvB"],
+      "itemNames": {"JVuhWGA9AXWasDvB": "Кинжал"},
+      "publicNotes": "<p>Должник Филлипо. Предлагает переговоры при 10 ОЗ или меньше либо когда один из его сыновей теряет сознание.</p>"
+    },
+    {
+      "_id": "HugoWeakSon00001",
+      "name": "Ослабленный сын Хьюго",
+      "designId": "actor-hugo-weak-son",
+      "sourceUuid": "Compendium.pf2e.pathfinder-npc-core.Actor.APn9B54hhRtr0oCQ",
+      "keepItemIds": ["n3jCGW9WDHnhi4Ky"],
+      "itemNames": {"n3jCGW9WDHnhi4Ky": "Кулак"},
+      "publicNotes": "<p>Сражается только кулаком, не атакует упавших и прекращает бой после предложения переговоров.</p>"
+    },
+    {
+      "_id": "HugoFisherSon001",
+      "name": "Готовый к драке сын Хьюго",
+      "designId": "actor-hugo-ready-son",
+      "sourceUuid": "Compendium.pf2e.pathfinder-npc-core.Actor.LbSA6uGVafcosT0X",
+      "keepItemIds": ["R0gVjXEwG1d4NEsN", "gKoSB1CdfTbYBa9o"],
+      "itemNames": {"R0gVjXEwG1d4NEsN": "Копьё", "gKoSB1CdfTbYBa9o": "Кулак"},
+      "publicNotes": "<p>Вариант для группы из пяти персонажей. Рыболовная леска и вынужденное перемещение удалены.</p>"
+    },
+    {
+      "_id": "CultCollectr0001",
+      "name": "Сборщик заражённых",
+      "designId": "actor-cult-collector",
+      "sourceUuid": "Compendium.pf2e.pathfinder-npc-core.Actor.GbPDSJeXjHc1VRN2",
+      "keepItemIds": ["yEcvRwueCdGqs9GC", "xmodHCDbIrXMNj5A", "zMkrKhyfRWFrFfuv"],
+      "itemNames": {"yEcvRwueCdGqs9GC": "Кинжал", "xmodHCDbIrXMNj5A": "Кулак", "zMkrKhyfRWFrFfuv": "Фанатичное безумие"},
+      "publicNotes": "<p>Пытается уйти с биркой после первого ранения. Его поражение не требуется для получения дальнейшего маршрута.</p>"
+    },
+    {
+      "_id": "DockZombie000001",
+      "name": "Утопленник",
+      "designId": "actor-drowned-zombie",
+      "sourceUuid": "Compendium.pf2e.pathfinder-monster-core.Actor.Xo4IGzw28hivgMmM",
+      "keepItemIds": ["wOkHQN8ELSDh7T1f", "v90WRjELLiKF57vr", "eulyI60JHNUYs39w", "q1OobVjFqRsc58KI", "Qknp3UNQSMjNTUmL"],
+      "itemNames": {"wOkHQN8ELSDh7T1f": "Кулак", "v90WRjELLiKF57vr": "Челюсти", "eulyI60JHNUYs39w": "Медленный", "q1OobVjFqRsc58KI": "Исцеление пустотой", "Qknp3UNQSMjNTUmL": "Схватить"},
+      "publicNotes": "<p>Волочащийся зомби без дополнительных болезней или авторских усилений.</p>"
+    },
+    {
+      "_id": "DockWeakZombie01",
+      "name": "Слабый утопленник",
+      "designId": "actor-weak-drowned-zombie",
+      "sourceUuid": "Compendium.pf2e.pathfinder-monster-core.Actor.Xo4IGzw28hivgMmM",
+      "keepItemIds": ["wOkHQN8ELSDh7T1f", "v90WRjELLiKF57vr", "eulyI60JHNUYs39w", "q1OobVjFqRsc58KI", "Qknp3UNQSMjNTUmL"],
+      "itemNames": {"wOkHQN8ELSDh7T1f": "Кулак", "v90WRjELLiKF57vr": "Челюсти", "eulyI60JHNUYs39w": "Медленный", "q1OobVjFqRsc58KI": "Исцеление пустотой", "Qknp3UNQSMjNTUmL": "Схватить"},
+      "adjustment": "weak-act-one",
+      "publicNotes": "<p>Слабая корректировка для варианта на пять персонажей: эффективный уровень −2, 15 ОО.</p>"
+    }
+  ],
+  "hazards": [
+    {
+      "_id": "HazTempleShade01",
+      "name": "Тени запертого храма",
+      "designId": "hazard-locked-temple-shadows",
+      "level": 2,
+      "stealth": 5,
+      "description": "<p>Haunt, связанная с медальоном мёртвого жреца. Это авторская опасность, а не существо-тень.</p>",
+      "disable": "<p>Нужно 3 успеха: @Check[religion|dc:16] (обучен), @Check[occultism|dc:18] (обучен), либо гарантированный путь через святую воду и кристалл вечного света.</p>",
+      "routine": "<p>Два действия: один Коготь копоти и один Погасший взор. После первого успеха Погасший взор недоступен; после второго Коготь ослабевает до +7 и 1d4+2.</p>",
+      "reset": "<p>Сбрасывается через 10 минут, если медальон не очищен. После полного отключения не сбрасывается.</p>",
+      "actions": [
+        {
+          "_id": "HauntReaction001",
+          "name": "Запертая молитва",
+          "actionType": "reaction",
+          "img": "systems/pf2e/icons/actions/Reaction.webp",
+          "description": "<p><strong>Триггер</strong> Живое существо касается медальона или пытается очистить алтарь.</p><hr><p><strong>Эффект</strong> Внутренняя дверь захлопывается, боковой выход остаётся доступен. Все живые существа в нефе совершают @Check[will|dc:16]: без эффекта при успехе, испуг 1 при провале, испуг 2 при критическом провале.</p>"
+        },
+        {
+          "_id": "HauntClaw0000001",
+          "name": "Коготь копоти",
+          "actionType": "action",
+          "actions": 1,
+          "img": "systems/pf2e/icons/actions/OneAction.webp",
+          "description": "<p>Один живой противник в пределах 20 футов: [[/r 1d20+9 # Коготь копоти]] против КБ, @Damage[(1d6+3)[void]]. Только одна наносящая урон атака за раунд.</p>"
+        },
+        {
+          "_id": "HauntGaze0000001",
+          "name": "Погасший взор",
+          "actionType": "action",
+          "actions": 1,
+          "img": "systems/pf2e/icons/actions/OneAction.webp",
+          "description": "<p>Один видимый противник в пределах 30 футов совершает @Check[will|dc:16]. При провале он @UUID[Compendium.pf2e.conditionitems.Item.TkIyaNPgTZFBCCuh]{ослеплён бликами} до начала следующего хода, при критическом провале — до конца следующего хода.</p>"
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "_id": "DeadPriestMedal1",
+      "name": "Медальон мёртвого жреца",
+      "designId": "item-dead-priest-medallion",
+      "description": "<p>Ключ к очищению храма. После очищения показывает три монолита, Мёртвый берег и фигуру Феонара. Не продаётся и не заменяет сокровище.</p>",
+      "img": "systems/pf2e/icons/default-icons/equipment.svg"
+    },
+    {
+      "_id": "CultLeadTag00001",
+      "name": "Свинцовая бирка культа",
+      "designId": "item-cult-lead-tag",
+      "description": "<p>На бирке выбиты знак Синегнили, дата следующего сбора и два направления: к старухе берега и жаждущему капитану.</p>",
+      "img": "systems/pf2e/icons/default-icons/equipment.svg"
+    }
+  ],
+  "scenes": [
+    {"_id": "SceneApertura001", "name": "Апертура и причал", "designId": "scene-apertura", "color": "#284b63", "sort": 100000},
+    {"_id": "SceneDrunkKrkn01", "name": "Таверна «Пьяный каркен»", "designId": "scene-drunken-kraken", "color": "#5b4636", "sort": 200000},
+    {"_id": "SceneTemple00001", "name": "Проклятый храм", "designId": "scene-cursed-temple", "color": "#30343f", "sort": 300000},
+    {"_id": "SceneHugoHouse01", "name": "Дом Хьюго", "designId": "scene-hugo-house", "color": "#4a4e3d", "sort": 400000}
+  ],
+  "journal": {
+    "_id": "Act1SaltGate0001",
+    "name": "Акт I. Соль на пороге",
+    "designId": "act1-salt-at-threshold",
+    "pages": [
+      {
+        "_id": "Act1PageIntro001",
+        "name": "1. Маршрут и веха",
+        "content": "<p><strong>Старт строго на 1-м уровне.</strong> Маршрут: прибытие → таверна → храм → гарантированное восстановление → причал → выбор дальнейшего пути. Дом Хьюго необязателен. После выбора Жертвенного столба или Мёртвого берега группа получает 2-й уровень.</p><p>Сцены: @UUID[Compendium.kraken-island-pf2e-ru.act-one-scenes.Scene.SceneApertura001], @UUID[Compendium.kraken-island-pf2e-ru.act-one-scenes.Scene.SceneDrunkKrkn01], @UUID[Compendium.kraken-island-pf2e-ru.act-one-scenes.Scene.SceneTemple00001], @UUID[Compendium.kraken-island-pf2e-ru.act-one-scenes.Scene.SceneHugoHouse01]. Сцены пока схематические и не содержат нелицензированных карт.</p>"
+      },
+      {
+        "_id": "Act1PageTavern01",
+        "name": "2. Таверна",
+        "content": "<p>Мирное решение: Дипломатия, Запугивание или Выступление СЛ 15. При провале начинается несмертельная драка, но улика о Феонаре не теряется.</p><table><tr><th>Группа</th><th>Состав</th><th>ОО</th></tr><tr><td>3</td><td>1 × @UUID[Compendium.kraken-island-pf2e-ru.act-one-actors.Actor.PirateCommon0001]</td><td>20</td></tr><tr><td>4</td><td>2 × пират-простолюдин</td><td>40</td></tr><tr><td>5</td><td>2 × пират-простолюдин</td><td>40</td></tr></table><p>Только кулаки и несмертельные Удары; нет реакций, фокуса по одной цели или преследования.</p>"
+      },
+      {
+        "_id": "Act1PageTemple01",
+        "name": "3. Проклятый храм",
+        "content": "<p>До триггера видны @UUID[Compendium.pf2e.equipment-srd.Item.z9T4c1hXwOotsMCp]{святая вода}, @UUID[Compendium.pf2e.equipment-srd.Item.mRz8Jmk4Q06SsZpC]{кристалл вечного света} и @UUID[Compendium.kraken-island-pf2e-ru.act-one-items.Item.DeadPriestMedal1]. Боковая дверь всегда открывается одним действием.</p><table><tr><th>Группа</th><th>Состав</th><th>ОО</th></tr><tr><td>3</td><td>@UUID[Compendium.kraken-island-pf2e-ru.act-one-actors.Actor.HazTempleShade01]</td><td>60</td></tr><tr><td>4</td><td>haunt + 1 × @UUID[Compendium.kraken-island-pf2e-ru.act-one-actors.Actor.TempleSkelGrd001]</td><td>80</td></tr><tr><td>5</td><td>haunt + 2 × скелет-страж</td><td>100</td></tr></table><p>Опасность использует 2 действия; каждый скелет — до 3. После полного отключения скелеты рассыпаются.</p>"
+      },
+      {
+        "_id": "Act1PageHugo0001",
+        "name": "4. Дом Хьюго",
+        "content": "<p>Побочная сцена. Проверки: Дипломатия или Общество СЛ 15, Запугивание СЛ 17. Провал не начинает бой автоматически.</p><table><tr><th>Группа</th><th>Состав</th><th>ОО</th></tr><tr><td>3</td><td>@UUID[Compendium.kraken-island-pf2e-ru.act-one-actors.Actor.HugoRigger000001] + @UUID[Compendium.kraken-island-pf2e-ru.act-one-actors.Actor.HugoWeakSon00001]</td><td>60</td></tr><tr><td>4</td><td>Хьюго + 2 × ослабленный сын</td><td>80</td></tr><tr><td>5</td><td>Хьюго + 2 × @UUID[Compendium.kraken-island-pf2e-ru.act-one-actors.Actor.HugoFisherSon001]</td><td>100</td></tr></table><p>Семья предлагает переговоры при 10 ОЗ Хьюго или падении одного сына; три выхода остаются доступными.</p>"
+      },
+      {
+        "_id": "Act1PageDock0001",
+        "name": "5. Синяя вода у причала",
+        "content": "<p>Сцена начинается только после восстановления. Культист пытается уйти со @UUID[Compendium.kraken-island-pf2e-ru.act-one-items.Item.CultLeadTag00001]{свинцовой биркой}; поражение культиста не является условием продолжения.</p><table><tr><th>Группа</th><th>Состав</th><th>ОО</th></tr><tr><td>3</td><td>@UUID[Compendium.kraken-island-pf2e-ru.act-one-actors.Actor.CultCollectr0001]</td><td>40</td></tr><tr><td>4</td><td>культист + @UUID[Compendium.kraken-island-pf2e-ru.act-one-actors.Actor.DockZombie000001]</td><td>60</td></tr><tr><td>5</td><td>культист + утопленник + @UUID[Compendium.kraken-island-pf2e-ru.act-one-actors.Actor.DockWeakZombie01]</td><td>75</td></tr></table><p>Action economy 3/5/7 против 9/12/15; зомби не концентрируют атаки. Лодка, улица и вода дают пути отхода.</p>"
+      },
+      {
+        "_id": "Act1PageClues001",
+        "name": "6. Обязательные улики",
+        "content": "<ul><li><strong>Феонар и храм:</strong> дочь кузнеца; Ави; fail-forward от пирата.</li><li><strong>Внешний источник:</strong> видение медальона; Религия/Оккультизм СЛ 15; надпись, которую читает Ави.</li><li><strong>Культ и Синегниль:</strong> приказ и бирка; исследование тела; вывод Ави.</li><li><strong>Следующий маршрут:</strong> видение; приказ; рыбак и храмовая фреска.</li><li><strong>Срочность:</strong> датированный приказ; вспышка у причала; видимые последствия.</li></ul><p>Каждая обязательная улика имеет два пути либо явный fail-forward.</p>"
+      },
+      {
+        "_id": "Act1PgRewards001",
+        "name": "7. Награды и системные UUID",
+        "content": "<p>Обязательная прогрессия одинакова для любой группы: 2 × @UUID[Compendium.pf2e.equipment-srd.Item.DKWuJb2rSgiotOG7]{руна мощи оружия +1}, @UUID[Compendium.pf2e.equipment-srd.Item.mRz8Jmk4Q06SsZpC]{кристалл вечного света}, @UUID[Compendium.pf2e.equipment-srd.Item.yzc8Sll1YMWq8PpR]{кольцо сигилов}, 2 × @UUID[Compendium.pf2e.equipment-srd.Item.j2CHumvbjmlLQX2i]{масло мощи}, @UUID[Compendium.pf2e.equipment-srd.Item.z9T4c1hXwOotsMCp]{святая вода}, 2 × @UUID[Compendium.pf2e.equipment-srd.Item.hDLbR56Id2OtU318]{слабый эликсир жизни}. Итоги 165/175/185 зм для 3/4/5 персонажей; различается только денежная часть.</p><p>Слухи: @UUID[Compendium.kraken-island-pf2e-ru.act-one-rumors.RollTable.AperturaRumor001].</p>"
+      }
+    ]
+  },
+  "table": {
+    "_id": "AperturaRumor001",
+    "name": "Слухи Апертуры",
+    "designId": "table-apertura-rumors",
+    "results": [
+      "Феонар появился несколько месяцев назад и сразу расспрашивал о старом храме.",
+      "По ночам тени в храме движутся против света, но за порогом никого не преследуют.",
+      "У Мёртвого берега живёт старуха, которая знает цену каждому обещанию.",
+      "Три каменных столба видны только во время отлива; возле них слышат голос капитана.",
+      "Хьюго задолжал Филлипо больше, чем может вернуть монетами, но у него есть лодка.",
+      "Синяя соль появляется на телах до того, как море успевает коснуться их."
+    ]
+  },
+  "requiredSystemUuids": [
+    "Compendium.pf2e.pathfinder-npc-core.Actor.APn9B54hhRtr0oCQ",
+    "Compendium.pf2e.pathfinder-monster-core.Actor.trchDxbDR2TiPMxT",
+    "Compendium.pf2e.pathfinder-npc-core.Actor.hBSGQAonirqUAHCP",
+    "Compendium.pf2e.pathfinder-npc-core.Actor.LbSA6uGVafcosT0X",
+    "Compendium.pf2e.pathfinder-npc-core.Actor.GbPDSJeXjHc1VRN2",
+    "Compendium.pf2e.pathfinder-monster-core.Actor.Xo4IGzw28hivgMmM",
+    "Compendium.pf2e.equipment-srd.Item.DKWuJb2rSgiotOG7",
+    "Compendium.pf2e.equipment-srd.Item.mRz8Jmk4Q06SsZpC",
+    "Compendium.pf2e.equipment-srd.Item.yzc8Sll1YMWq8PpR",
+    "Compendium.pf2e.equipment-srd.Item.j2CHumvbjmlLQX2i",
+    "Compendium.pf2e.equipment-srd.Item.z9T4c1hXwOotsMCp",
+    "Compendium.pf2e.equipment-srd.Item.hDLbR56Id2OtU318"
+  ]
+}

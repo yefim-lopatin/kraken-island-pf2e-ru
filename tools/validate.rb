@@ -8,9 +8,18 @@ ROOT = Pathname.new(__dir__).join("..").expand_path
 MANIFEST_PATH = ROOT.join("module.json")
 REGISTRY_PATH = ROOT.join("data", "document-registry.json")
 EXPECTED_MODULE_ID = "kraken-island-pf2e-ru"
-EXPECTED_DOCUMENT_COUNT = 74
+EXPECTED_DOCUMENT_COUNT = 18
+EXPECTED_IMPLEMENTED_COUNT = 18
+EXPECTED_PACKS = {
+  "act-one-actors" => "Actor",
+  "act-one-items" => "Item",
+  "act-one-journal" => "JournalEntry",
+  "act-one-scenes" => "Scene",
+  "act-one-rumors" => "RollTable"
+}.freeze
 
 errors = []
+source_specs_verified = false
 
 def load_json(path, errors)
   JSON.parse(path.read)
@@ -68,7 +77,17 @@ if manifest
   end
 
   packs = manifest["packs"]
-  errors << "module.json: pack пока не должен быть объявлен" if packs && !packs.empty?
+  unless packs.is_a?(Array) && packs.length == EXPECTED_PACKS.length
+    errors << "module.json: нужны пять паков вертикального среза"
+  else
+    actual_packs = packs.to_h { |pack| [pack["name"], pack["type"]] }
+    errors << "module.json: состав паков не совпадает" unless actual_packs == EXPECTED_PACKS
+    packs.each do |pack|
+      errors << "module.json: Adventure pack запрещён на этом этапе" if pack["type"] == "Adventure"
+      errors << "module.json: неверный путь pack #{pack['name']}" unless pack["path"] == "packs/#{pack['name']}"
+      errors << "module.json: pack #{pack['name']} должен зависеть от pf2e" unless pack["system"] == "pf2e"
+    end
+  end
 
   systems = manifest.dig("relationships", "systems")
   unless systems.is_a?(Array) && systems.length == 1
@@ -89,8 +108,10 @@ end
 
 if registry
   documents = registry["documents"]
+  source_specs = registry.fetch("sourceSpecs", [])
   errors << "реестр: moduleId не совпадает" unless registry["moduleId"] == EXPECTED_MODULE_ID
   errors << "реестр: documentCount должен быть #{EXPECTED_DOCUMENT_COUNT}" unless registry["documentCount"] == EXPECTED_DOCUMENT_COUNT
+  errors << "реестр: sourceSpecs должен быть непустым массивом" unless source_specs.is_a?(Array) && !source_specs.empty?
 
   unless documents.is_a?(Array)
     errors << "реестр: documents должен быть массивом"
@@ -106,7 +127,7 @@ if registry
     label = "реестр[#{index}]"
     errors << "#{label}: неверный _id #{document['_id'].inspect}" unless document["_id"].is_a?(String) && document["_id"].match?(/\A[A-Za-z0-9]{16}\z/)
     errors << "#{label}: неверный designId #{document['designId'].inspect}" unless document["designId"].is_a?(String) && document["designId"].match?(/\A[a-z0-9]+(?:-[a-z0-9]+)*\z/)
-    errors << "#{label}: статус должен быть reserved" unless document["status"] == "reserved"
+    errors << "#{label}: статус должен быть reserved или implemented" unless %w[reserved implemented].include?(document["status"])
 
     allowed_types = %w[Actor Item JournalEntry Scene RollTable]
     errors << "#{label}: неподдерживаемый documentType" unless allowed_types.include?(document["documentType"])
@@ -116,9 +137,18 @@ if registry
       errors << "#{label}: Actor должен быть Actor/npc" unless document["documentType"] == "Actor" && document["documentSubtype"] == "npc"
     end
 
-    source_path = ROOT.join(document["sourceSpec"].to_s).cleanpath
-    errors << "#{label}: не найден sourceSpec #{document['sourceSpec']}" unless source_path.file?
+    source_spec = document["sourceSpec"]
+    errors << "#{label}: sourceSpec не входит в реестр внешних спецификаций" unless source_specs.include?(source_spec)
+    errors << "#{label}: sourceSpec должен быть относительной ссылкой" unless source_spec.is_a?(String) && !Pathname.new(source_spec).absolute?
+    if document["status"] == "implemented"
+      errors << "#{label}: implemented-документ не связан с pack" unless EXPECTED_PACKS.key?(document["pack"])
+      errors << "#{label}: pack не соответствует типу документа" unless EXPECTED_PACKS[document["pack"]] == document["documentType"]
+    end
   end
+
+  implemented = documents.count { |document| document["status"] == "implemented" }
+  errors << "реестр: implemented должно быть #{EXPECTED_IMPLEMENTED_COUNT}, получено #{implemented}" unless implemented == EXPECTED_IMPLEMENTED_COUNT
+  errors << "реестр: knownOmissions должен быть пуст в прототипе Апертуры" unless registry["knownOmissions"] == []
 
   duplicate_ids = duplicates(ids)
   duplicate_design_ids = duplicates(design_ids)
@@ -127,38 +157,47 @@ if registry
   errors << "реестр: дубликаты designId #{duplicate_design_ids.join(', ')}" unless duplicate_design_ids.empty?
   errors << "реестр: дубликаты type/designId #{duplicate_namespaced.join(', ')}" unless duplicate_namespaced.empty?
 
-  source_rows = []
-  registry.fetch("sourceSpecs", []).each do |relative_path|
-    source_path = ROOT.join(relative_path).cleanpath
-    next unless source_path.file?
+  source_paths = source_specs.map { |relative_path| ROOT.join(relative_path).cleanpath }
+  available_source_paths = source_paths.select(&:file?)
+  if available_source_paths.any? && available_source_paths.length != source_paths.length
+    missing_source_specs = source_specs.zip(source_paths).reject { |_relative_path, path| path.file? }.map(&:first)
+    errors << "реестр: доступна только часть внешних спецификаций; отсутствуют #{missing_source_specs.join(', ')}"
+  elsif available_source_paths.length == source_paths.length
+    source_specs_verified = true
+    source_rows = []
+    source_specs.zip(source_paths).each do |relative_path, source_path|
+      source_path.each_line do |line|
+        match = line.match(/^\| ([^|]+?) \| ([^|]+?) \| `([^`]+)` \| `([A-Za-z0-9]+)` \|$/)
+        next unless match
 
-    source_path.each_line do |line|
-      match = line.match(/^\| ([^|]+?) \| ([^|]+?) \| `([^`]+)` \| `([A-Za-z0-9]+)` \|$/)
-      next unless match
-
-      source_rows << [relative_path, match[1].strip, match[2].strip, match[3], match[4]]
+        source_rows << [relative_path, match[1].strip, match[2].strip, match[3], match[4]]
+      end
     end
-  end
 
-  registry_rows = documents.map do |document|
-    [document["sourceSpec"], document["sourceType"], document["name"], document["designId"], document["_id"]]
+    registry_rows = documents.map do |document|
+      [document["sourceSpec"], document["sourceType"], document["name"], document["designId"], document["_id"]]
+    end
+    missing_rows = registry_rows - source_rows
+    extra_rows = source_rows - registry_rows
+    errors << "реестр: #{missing_rows.length} записей не подтверждены спецификациями" unless missing_rows.empty?
+    errors << "реестр: #{extra_rows.length} строк спецификаций не попали в реестр" unless extra_rows.empty?
   end
-  missing_rows = registry_rows - source_rows
-  extra_rows = source_rows - registry_rows
-  errors << "реестр: #{missing_rows.length} записей не подтверждены спецификациями" unless missing_rows.empty?
-  errors << "реестр: #{extra_rows.length} строк спецификаций не попали в реестр" unless extra_rows.empty?
 end
 
 forbidden_code = Dir.glob(ROOT.join("**", "*").to_s).select do |path|
   File.file?(path) && %w[.js .mjs .cjs].include?(File.extname(path))
 end
 errors << "найден исполняемый JavaScript: #{forbidden_code.join(', ')}" unless forbidden_code.empty?
-errors << "каталог packs не должен существовать на этом этапе" if ROOT.join("packs").exist?
+EXPECTED_PACKS.each_key do |pack_name|
+  pack_path = ROOT.join("packs", pack_name)
+  errors << "нет собранного pack #{pack_name}" unless pack_path.directory? && pack_path.join("CURRENT").file?
+end
 
 if errors.empty?
   puts "ПРОВЕРКА 1 — MANIFEST: ПРОЙДЕНА"
-  puts "ПРОВЕРКА 2 — РЕЕСТР #{EXPECTED_DOCUMENT_COUNT} ID: ПРОЙДЕНА"
-  puts "ПРОВЕРКА 3 — ГРАНИЦЫ CONTENT-ONLY: ПРОЙДЕНА"
+  puts "ПРОВЕРКА 2 — РЕЕСТР #{EXPECTED_DOCUMENT_COUNT} ДОКУМЕНТОВ АПЕРТУРЫ: ПРОЙДЕНА"
+  puts(source_specs_verified ? "ПРОВЕРКА 2A — ВНЕШНИЕ СПЕЦИФИКАЦИИ: СВЕРЕНЫ" : "ПРОВЕРКА 2A — ВНЕШНИЕ СПЕЦИФИКАЦИИ: НЕ ВКЛЮЧЕНЫ В АВТОНОМНЫЙ МОДУЛЬ")
+  puts "ПРОВЕРКА 3 — ПЯТЬ CONTENT-ONLY PACK БЕЗ ADVENTURE И JAVASCRIPT: ПРОЙДЕНА"
   exit 0
 end
 
