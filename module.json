@@ -1,12 +1,12 @@
 {
   "id": "kraken-island-pf2e-ru",
   "type": "module",
-  "title": "Остров Кракена — PF2e Remaster",
+  "title": "Остров Кракена — Апертура",
   "description": "Небольшой content-only прототип приключения в деревне Апертура и её ближайшей области для личного тестирования в Foundry VTT.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "url": "https://github.com/yefim-lopatin/kraken-island-pf2e-ru",
   "manifest": "https://github.com/yefim-lopatin/kraken-island-pf2e-ru/releases/latest/download/module.json",
-  "download": "https://github.com/yefim-lopatin/kraken-island-pf2e-ru/releases/download/v0.1.0/kraken-island-pf2e-ru.zip",
+  "download": "https://github.com/yefim-lopatin/kraken-island-pf2e-ru/releases/download/v0.2.0/kraken-island-pf2e-ru.zip",
   "compatibility": {
     "minimum": "14.365",
     "maximum": "14"
@@ -63,6 +63,35 @@
       "type": "RollTable",
       "system": "pf2e",
       "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }
+    },
+    {
+      "name": "apertura-adventure",
+      "label": "Остров Кракена — Апертура",
+      "banner": "modules/kraken-island-pf2e-ru/assets/apertura-quickstart.png",
+      "path": "packs/apertura-adventure",
+      "type": "Adventure",
+      "system": "pf2e",
+      "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }
     }
-  ]
+  ],
+  "media": [
+    {
+      "type": "setup",
+      "caption": "Остров Кракена — Апертура",
+      "thumbnail": "modules/kraken-island-pf2e-ru/assets/apertura-quickstart.png",
+      "loop": false
+    }
+  ],
+  "quickstart": {
+    "adventures": {
+      "pf2e": {
+        "uuid": "Compendium.kraken-island-pf2e-ru.apertura-adventure.Adventure.AperturaStart001"
+      }
+    },
+    "world": {
+      "background": "modules/kraken-island-pf2e-ru/assets/apertura-quickstart.png",
+      "cover": "modules/kraken-island-pf2e-ru/assets/apertura-quickstart.png",
+      "description": "<p>Небольшое приключение для персонажей 1-го уровня в деревне Апертура: таверна, проклятый храм, причал и необязательный дом Хьюго.</p>"
+    }
+  }
 }

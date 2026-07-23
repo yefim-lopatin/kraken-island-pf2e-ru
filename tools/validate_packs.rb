@@ -47,7 +47,7 @@ script = <<~'JAVASCRIPT'
   }
   const systemManifest = JSON.parse(fs.readFileSync(path.join(pf2eRoot, "system.json"), "utf8"));
   const systemPacks = new Map(systemManifest.packs.map(pack => [pack.name, pack.path]));
-  const collectionByType = {Actor: "actors", Item: "items", JournalEntry: "journal", Scene: "scenes", RollTable: "tables"};
+  const collectionByType = {Actor: "actors", Item: "items", JournalEntry: "journal", Scene: "scenes", RollTable: "tables", Adventure: "adventures"};
   const openedSystemPacks = new Map();
   const snapshots = [];
   async function openSystemPack(packName) {
@@ -101,7 +101,7 @@ end
 
 if errors.empty?
   expected_by_pack = REGISTRY.fetch("documents").select { |doc| doc["status"] == "implemented" }.group_by { |doc| doc["pack"] }
-  collection_by_type = {"Actor" => "actors", "Item" => "items", "JournalEntry" => "journal", "Scene" => "scenes", "RollTable" => "tables"}
+  collection_by_type = {"Actor" => "actors", "Item" => "items", "JournalEntry" => "journal", "Scene" => "scenes", "RollTable" => "tables", "Adventure" => "adventures"}
   top_documents = {}
   all_values = []
 
@@ -110,7 +110,11 @@ if errors.empty?
     collection = collection_by_type.fetch(pack["type"])
     top_rows = rows.select { |row| row["key"].match?(/\A!#{Regexp.escape(collection)}![^.]+\z/) }
     actual_ids = top_rows.map { |row| row.dig("value", "_id") }.sort
-    expected_ids = expected_by_pack.fetch(pack["name"], []).map { |doc| doc["_id"] }.sort
+    expected_ids = if pack["type"] == "Adventure"
+      ["AperturaStart001"]
+    else
+      expected_by_pack.fetch(pack["name"], []).map { |doc| doc["_id"] }.sort
+    end
     errors << "pack #{pack['name']}: top-level ID не совпадают с реестром" unless actual_ids == expected_ids
     top_rows.each { |row| top_documents[[pack["name"], row.dig("value", "_id")]] = row["value"] }
     rows.each { |row| all_values << [pack["name"], row["key"], row["value"]] }
@@ -159,6 +163,28 @@ if errors.empty?
   errors << "RollTable: формула должна быть 1d6" unless table&.fetch("formula", nil) == "1d6"
   errors << "RollTable: ожидалось 6 результатов" unless Array(table&.fetch("results", nil)).length == 6
 
+  adventure = top_documents[["apertura-adventure", "AperturaStart001"]]
+  errors << "Adventure: отсутствует Quickstart-документ" unless adventure
+  errors << "Adventure: неверная обложка" unless adventure&.fetch("img", nil) == "modules/#{RECIPE['moduleId']}/assets/apertura-quickstart.png"
+  adventure_fields = {
+    "Actor" => "actors",
+    "Item" => "items",
+    "JournalEntry" => "journal",
+    "Scene" => "scenes",
+    "RollTable" => "tables"
+  }
+  adventure_fields.each do |document_type, field|
+    expected_ids = REGISTRY.fetch("documents").select { |doc| doc["documentType"] == document_type }.map { |doc| doc["_id"] }.sort
+    actual_ids = Array(adventure&.fetch(field, nil)).map { |doc| doc["_id"] }.sort
+    errors << "Adventure: поле #{field} не совпадает с реестром" unless actual_ids == expected_ids
+  end
+  errors << "Adventure: Actor должны содержать embedded Item" unless Array(adventure&.fetch("actors", nil)).all? { |actor| Array(actor["items"]).all? { |item| item.is_a?(Hash) } }
+  errors << "Adventure: JournalEntry должен содержать embedded pages" unless Array(adventure&.fetch("journal", nil)).all? { |entry| Array(entry["pages"]).all? { |page| page.is_a?(Hash) } }
+  errors << "Adventure: Scene должны содержать embedded levels" unless Array(adventure&.fetch("scenes", nil)).all? { |scene| Array(scene["levels"]).all? { |level| level.is_a?(Hash) } }
+
+  expected_quickstart = "Compendium.#{RECIPE['moduleId']}.apertura-adventure.Adventure.AperturaStart001"
+  errors << "Quickstart: UUID не ведёт на Adventure" unless MANIFEST.dig("quickstart", "adventures", "pf2e", "uuid") == expected_quickstart
+
   uuids = []
   all_values.each do |pack_name, key, value|
     walk(value) do |leaf, leaf_path|
@@ -197,8 +223,8 @@ if errors.empty?
 end
 
 if errors.empty?
-  puts "ПРОВЕРКА PACK A — LEVELDB V14 И 18 ДОКУМЕНТОВ: ПРОЙДЕНА"
-  puts "ПРОВЕРКА PACK B — PF2E 8.3.0, HAUNT И EMBEDDED DOCUMENTS: ПРОЙДЕНА"
+  puts "ПРОВЕРКА PACK A — LEVELDB V14, 18 CONTENT-ДОКУМЕНТОВ И 1 ADVENTURE: ПРОЙДЕНА"
+  puts "ПРОВЕРКА PACK B — PF2E 8.3.0, HAUNT И ВЛОЖЕННЫЙ QUICKSTART-КОНТЕНТ: ПРОЙДЕНА"
   puts "ПРОВЕРКА PACK C — UUID, ПУТИ И ОТСУТСТВИЕ D&D 5E: ПРОЙДЕНА"
   exit 0
 end
