@@ -1,0 +1,723 @@
+{
+  "schemaVersion": 1,
+  "moduleId": "kraken-island-pf2e-ru",
+  "status": "reserved-only",
+  "documentCount": 74,
+  "sourceSpecs": [
+    "../07 — Акт II — Жажда Тристана.md",
+    "../08 — Акт III — Долги острова.md",
+    "../09 — Акт IV — Факел над бездной.md",
+    "../10 — Акт V — Крепость избранного.md",
+    "../11 — Сквозная матрица 1–6.md"
+  ],
+  "knownOmissions": [
+    {
+      "sourceSpec": "../06 — Акт I — Соль на пороге.md",
+      "reason": "В спецификации Акта I нет таблицы стабильных ID; записи Акта I не входят в требуемый набор 74 резервов."
+    }
+  ],
+  "documents": [
+    {
+      "documentType": "JournalEntry",
+      "sourceType": "JournalEntry",
+      "name": "Акт II. Жажда Тристана",
+      "designId": "act2-thirst-of-tristan",
+      "_id": "Act2Thirst000001",
+      "sourceSpec": "../07 — Акт II — Жажда Тристана.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Scene",
+      "sourceType": "Scene",
+      "name": "Жертвенный столб",
+      "designId": "scene-sacrificial-pillar",
+      "_id": "ScenePillar00001",
+      "sourceSpec": "../07 — Акт II — Жажда Тристана.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Scene",
+      "sourceType": "Scene",
+      "name": "Мёртвый берег",
+      "designId": "scene-dead-shore",
+      "_id": "SceneDeadshore01",
+      "sourceSpec": "../07 — Акт II — Жажда Тристана.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Scene",
+      "sourceType": "Scene",
+      "name": "Тоскливый грот",
+      "designId": "scene-sorrowful-grotto",
+      "_id": "SceneGrotto00001",
+      "sourceSpec": "../07 — Акт II — Жажда Тристана.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Тристан дель Апертура",
+      "designId": "actor-tristan-ghost",
+      "_id": "TristanGhost0001",
+      "sourceSpec": "../07 — Акт II — Жажда Тристана.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Горбатая Мэй",
+      "designId": "actor-humpback-mae",
+      "_id": "HumpbackMae00001",
+      "sourceSpec": "../07 — Акт II — Жажда Тристана.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Соляной отголосок",
+      "designId": "actor-pillar-echo",
+      "_id": "PillarEchoMin001",
+      "sourceSpec": "../07 — Акт II — Жажда Тристана.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Страж глубин",
+      "designId": "actor-grotto-warden",
+      "_id": "GrottoWarden0001",
+      "sourceSpec": "../07 — Акт II — Жажда Тристана.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Водяной прислужник",
+      "designId": "actor-water-servitor",
+      "_id": "WaterServitor001",
+      "sourceSpec": "../07 — Акт II — Жажда Тристана.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Hazard",
+      "name": "Плач трёх монолитов",
+      "designId": "hazard-three-monoliths",
+      "_id": "HazPillarEcho001",
+      "sourceSpec": "../07 — Акт II — Жажда Тристана.md",
+      "status": "reserved",
+      "documentSubtype": "hazard"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Hazard",
+      "name": "Отступление Мэй",
+      "designId": "hazard-mae-retreat",
+      "_id": "HazMaeRetreat001",
+      "sourceSpec": "../07 — Акт II — Жажда Тристана.md",
+      "status": "reserved",
+      "documentSubtype": "hazard"
+    },
+    {
+      "documentType": "Item",
+      "sourceType": "Item",
+      "name": "Ракушка жажды",
+      "designId": "item-thirst-shell",
+      "_id": "ThirstShell00001",
+      "sourceSpec": "../07 — Акт II — Жажда Тристана.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "RollTable",
+      "sourceType": "RollTable",
+      "name": "Цены Мэй",
+      "designId": "table-mae-bargains",
+      "_id": "MaeBargains00001",
+      "sourceSpec": "../07 — Акт II — Жажда Тристана.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "JournalEntry",
+      "sourceType": "JournalEntry",
+      "name": "Акт III. Долги острова",
+      "designId": "act3-island-debts",
+      "_id": "Act3Debts0000001",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Scene",
+      "sourceType": "Scene",
+      "name": "Лагерь лесорубов",
+      "designId": "scene-lumber-camp",
+      "_id": "SceneLumber00001",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Scene",
+      "sourceType": "Scene",
+      "name": "Ржавая шахта",
+      "designId": "scene-rust-mine",
+      "_id": "SceneRustMine001",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Scene",
+      "sourceType": "Scene",
+      "name": "Виноградник",
+      "designId": "scene-vineyard",
+      "_id": "SceneVineyard001",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Scene",
+      "sourceType": "Scene",
+      "name": "Чёрный утёс",
+      "designId": "scene-black-cliff",
+      "_id": "SceneBlackCliff1",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Scene",
+      "sourceType": "Scene",
+      "name": "Ачуак",
+      "designId": "scene-achuak",
+      "_id": "SceneAchuak00001",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Scene",
+      "sourceType": "Scene",
+      "name": "Пустое хранилище",
+      "designId": "scene-empty-vault",
+      "_id": "ScnEmptyVault001",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Хранитель пруда",
+      "designId": "actor-forest-warden",
+      "_id": "ForestWarden0001",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Росток пруда",
+      "designId": "actor-pond-seedling",
+      "_id": "PondSeedling0001",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Матка ржавников",
+      "designId": "actor-rust-beetle",
+      "_id": "RustBeetleBoss01",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Личинка ржавника",
+      "designId": "actor-rust-larva",
+      "_id": "RustLarva0000001",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Рудольфо",
+      "designId": "actor-rudolfo",
+      "_id": "RudolfoVintner01",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Виноградное пугало",
+      "designId": "actor-vine-scarecrow",
+      "_id": "VineScarecrow001",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Стая лозовых крыс",
+      "designId": "actor-vine-rat-swarm",
+      "_id": "VineRatSwarm0001",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Капитан коалинтов",
+      "designId": "actor-koalint-captain",
+      "_id": "KoalintCaptain01",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Коалинт-налётчик",
+      "designId": "actor-koalint-raider",
+      "_id": "KoalintRaider001",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Джимми «Заноза»",
+      "designId": "actor-jimmy-splinter",
+      "_id": "JimmySplinter001",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Родерико",
+      "designId": "actor-roderico",
+      "_id": "RodericoHeir0001",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Главарь кладоискателей",
+      "designId": "actor-vault-hunter-leader",
+      "_id": "VaultHunterLead1",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Кладоискатель",
+      "designId": "actor-vault-hunter",
+      "_id": "VaultHunter00001",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Hazard",
+      "name": "Ржавый подъёмник",
+      "designId": "hazard-rust-lift",
+      "_id": "HazRustLift00001",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved",
+      "documentSubtype": "hazard"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Hazard",
+      "name": "Камнепад Чёрного утёса",
+      "designId": "hazard-cliff-rockfall",
+      "_id": "HazCliffRocks001",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved",
+      "documentSubtype": "hazard"
+    },
+    {
+      "documentType": "Item",
+      "sourceType": "Item",
+      "name": "Сигнальная линза",
+      "designId": "item-torch-signal-lens",
+      "_id": "TorchSignalLens1",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Item",
+      "sourceType": "Item",
+      "name": "Ключ рудничного пути",
+      "designId": "item-rust-transit-key",
+      "_id": "RustTransitKey01",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Item",
+      "sourceType": "Item",
+      "name": "Жетон сердцевины",
+      "designId": "item-heartwood-token",
+      "_id": "HeartwoodToken01",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Item",
+      "sourceType": "Item",
+      "name": "Карта Чёрного утёса",
+      "designId": "item-black-cliff-map",
+      "_id": "BlackCliffMap001",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "RollTable",
+      "sourceType": "RollTable",
+      "name": "События внутренних троп",
+      "designId": "table-inland-events",
+      "_id": "InlandEvents0001",
+      "sourceSpec": "../08 — Акт III — Долги острова.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "JournalEntry",
+      "sourceType": "JournalEntry",
+      "name": "Акт IV. Факел над бездной",
+      "designId": "act4-torch-over-abyss",
+      "_id": "Act4Torch0000001",
+      "sourceSpec": "../09 — Акт IV — Факел над бездной.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Scene",
+      "sourceType": "Scene",
+      "name": "Факельный остров",
+      "designId": "scene-torch-island",
+      "_id": "SceneTorchIsle01",
+      "sourceSpec": "../09 — Акт IV — Факел над бездной.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Scene",
+      "sourceType": "Scene",
+      "name": "Внешний риф",
+      "designId": "scene-torch-reef",
+      "_id": "SceneTorchReef01",
+      "sourceSpec": "../09 — Акт IV — Факел над бездной.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Scene",
+      "sourceType": "Scene",
+      "name": "Причал пленников",
+      "designId": "scene-torch-quay",
+      "_id": "SceneTorchQuay01",
+      "sourceSpec": "../09 — Акт IV — Факел над бездной.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Scene",
+      "sourceType": "Scene",
+      "name": "Утопленная часовня",
+      "designId": "scene-torch-chapel",
+      "_id": "SceneTorchChap01",
+      "sourceSpec": "../09 — Акт IV — Факел над бездной.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Scene",
+      "sourceType": "Scene",
+      "name": "Башня маяка",
+      "designId": "scene-torch-beacon",
+      "_id": "ScnTorchBeacon01",
+      "sourceSpec": "../09 — Акт IV — Факел над бездной.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Смотритель причала",
+      "designId": "actor-torch-overseer",
+      "_id": "TorchOverseer001",
+      "sourceSpec": "../09 — Акт IV — Факел над бездной.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Палубный культист",
+      "designId": "actor-torch-deckhand",
+      "_id": "TorchDeckhand001",
+      "sourceSpec": "../09 — Акт IV — Факел над бездной.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Хранитель маяка",
+      "designId": "actor-beacon-keeper",
+      "_id": "BeaconKeeper0001",
+      "sourceSpec": "../09 — Акт IV — Факел над бездной.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Утопленный аколит",
+      "designId": "actor-drowned-acolyte",
+      "_id": "DrownAcolyte0001",
+      "sourceSpec": "../09 — Акт IV — Факел над бездной.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Рифовый часовой",
+      "designId": "actor-torch-sentry",
+      "_id": "TorchSentry00001",
+      "sourceSpec": "../09 — Акт IV — Факел над бездной.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Hazard",
+      "name": "Луч сигнального маяка",
+      "designId": "hazard-beacon-sweep",
+      "_id": "HazBeaconSweep01",
+      "sourceSpec": "../09 — Акт IV — Факел над бездной.md",
+      "status": "reserved",
+      "documentSubtype": "hazard"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Hazard",
+      "name": "Колокол утопленных",
+      "designId": "hazard-drowned-bell",
+      "_id": "HazDrownedBell01",
+      "sourceSpec": "../09 — Акт IV — Факел над бездной.md",
+      "status": "reserved",
+      "documentSubtype": "hazard"
+    },
+    {
+      "documentType": "Item",
+      "sourceType": "Item",
+      "name": "«Ночь культа Кракена»",
+      "designId": "item-night-of-kraken",
+      "_id": "NightKrakenBook1",
+      "sourceSpec": "../09 — Акт IV — Факел над бездной.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Item",
+      "sourceType": "Item",
+      "name": "Призма маяка",
+      "designId": "item-beacon-prism",
+      "_id": "BeaconPrism00001",
+      "sourceSpec": "../09 — Акт IV — Факел над бездной.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Item",
+      "sourceType": "Item",
+      "name": "Карта крепости",
+      "designId": "item-fortress-chart",
+      "_id": "FortressChart001",
+      "sourceSpec": "../09 — Акт IV — Факел над бездной.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "RollTable",
+      "sourceType": "RollTable",
+      "name": "Пленники Факельного острова",
+      "designId": "table-torch-prisoners",
+      "_id": "TorchPrisoners01",
+      "sourceSpec": "../09 — Акт IV — Факел над бездной.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "JournalEntry",
+      "sourceType": "JournalEntry",
+      "name": "Акт V. Крепость избранного",
+      "designId": "act5-fortress-chosen",
+      "_id": "Act5Fortress0001",
+      "sourceSpec": "../10 — Акт V — Крепость избранного.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Scene",
+      "sourceType": "Scene",
+      "name": "Крепость Феонара",
+      "designId": "scene-cult-fortress",
+      "_id": "SceneCultFort001",
+      "sourceSpec": "../10 — Акт V — Крепость избранного.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Scene",
+      "sourceType": "Scene",
+      "name": "Внешний док",
+      "designId": "scene-fortress-dock",
+      "_id": "SceneFortDock001",
+      "sourceSpec": "../10 — Акт V — Крепость избранного.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Scene",
+      "sourceType": "Scene",
+      "name": "Колодец Синегнили",
+      "designId": "scene-blue-rot-well",
+      "_id": "SceneBlueWell001",
+      "sourceSpec": "../10 — Акт V — Крепость избранного.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Scene",
+      "sourceType": "Scene",
+      "name": "Безмолвное святилище",
+      "designId": "scene-fortress-sanctuary",
+      "_id": "SceneFortSanct01",
+      "sourceSpec": "../10 — Акт V — Крепость избранного.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Scene",
+      "sourceType": "Scene",
+      "name": "Зал печати",
+      "designId": "scene-seal-hall",
+      "_id": "SceneSealHall001",
+      "sourceSpec": "../10 — Акт V — Крепость избранного.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Феонар",
+      "designId": "actor-feonar",
+      "_id": "FeonarCultBoss01",
+      "sourceSpec": "../10 — Акт V — Крепость избранного.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Комендант крепости",
+      "designId": "actor-fortress-commander",
+      "_id": "FortCommander001",
+      "sourceSpec": "../10 — Акт V — Крепость избранного.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Караульный культа",
+      "designId": "actor-fortress-guard",
+      "_id": "FortCultGuard001",
+      "sourceSpec": "../10 — Акт V — Крепость избранного.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Недоформированное отродье",
+      "designId": "actor-blue-rot-thrall",
+      "_id": "BlueRotThrall001",
+      "sourceSpec": "../10 — Акт V — Крепость избранного.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Actor",
+      "name": "Ритуальный наместник",
+      "designId": "actor-feonar-lieutenant",
+      "_id": "FeonarLieut00001",
+      "sourceSpec": "../10 — Акт V — Крепость избранного.md",
+      "status": "reserved",
+      "documentSubtype": "npc"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Hazard",
+      "name": "Приливная заслонка",
+      "designId": "hazard-fortress-floodgate",
+      "_id": "HazFortFlood0001",
+      "sourceSpec": "../10 — Акт V — Крепость избранного.md",
+      "status": "reserved",
+      "documentSubtype": "hazard"
+    },
+    {
+      "documentType": "Actor",
+      "sourceType": "Hazard",
+      "name": "Колодец Синегнили",
+      "designId": "hazard-blue-rot-well",
+      "_id": "HazBlueRotWell01",
+      "sourceSpec": "../10 — Акт V — Крепость избранного.md",
+      "status": "reserved",
+      "documentSubtype": "hazard"
+    },
+    {
+      "documentType": "Item",
+      "sourceType": "Item",
+      "name": "Замковый камень печати",
+      "designId": "item-seal-keystone",
+      "_id": "SealKeystone0001",
+      "sourceSpec": "../10 — Акт V — Крепость избранного.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "Item",
+      "sourceType": "Item",
+      "name": "Реестр Феонара",
+      "designId": "item-feonar-ledger",
+      "_id": "FeonarLedger0001",
+      "sourceSpec": "../10 — Акт V — Крепость избранного.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "RollTable",
+      "sourceType": "RollTable",
+      "name": "Эпилоги Острова Кракена",
+      "designId": "table-kraken-epilogues",
+      "_id": "KrakenEpilogue01",
+      "sourceSpec": "../10 — Акт V — Крепость избранного.md",
+      "status": "reserved"
+    },
+    {
+      "documentType": "JournalEntry",
+      "sourceType": "JournalEntry",
+      "name": "Сквозная матрица 1→6",
+      "designId": "campaign-throughline-1-6",
+      "_id": "CampMatrix000001",
+      "sourceSpec": "../11 — Сквозная матрица 1–6.md",
+      "status": "reserved"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kraken-island-pf2e-ru",
+  "type": "module",
+  "title": "Остров Кракена — PF2e Remaster",
+  "description": "Минимальный content-only каркас русскоязычного приключения для личного использования. Игровые документы и Adventure pack ещё не включены.",
+  "version": "0.0.1",
+  "compatibility": {
+    "minimum": "14.365",
+    "maximum": "14"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "8.3.0",
+          "maximum": "8"
+        }
+      }
+    ]
+  }
+}
