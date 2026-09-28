@@ -8,7 +8,7 @@ ROOT = Pathname.new(__dir__).join("..").expand_path
 MANIFEST_PATH = ROOT.join("module.json")
 REGISTRY_PATH = ROOT.join("data", "document-registry.json")
 EXPECTED_MODULE_ID = "kraken-island-pf2e-ru"
-EXPECTED_VERSION = "0.2.1"
+EXPECTED_VERSION = "0.2.2"
 EXPECTED_DOCUMENT_COUNT = 18
 EXPECTED_IMPLEMENTED_COUNT = 18
 EXPECTED_PACKS = {
@@ -74,7 +74,7 @@ if manifest
   expected_download = "https://github.com/yefim-lopatin/kraken-island-pf2e-ru/releases/download/v#{EXPECTED_VERSION}/kraken-island-pf2e-ru.zip"
   errors << "module.json: download не соответствует версии #{EXPECTED_VERSION}" unless manifest["download"] == expected_download
   errors << "module.json: minimum должен быть 14.365" unless manifest.dig("compatibility", "minimum") == "14.365"
-  errors << "module.json: verified должен быть 14.365" unless manifest.dig("compatibility", "verified") == "14.365"
+  errors << "module.json: verified должен быть 14.368" unless manifest.dig("compatibility", "verified") == "14.368"
   errors << "module.json: maximum должен ограничивать поколение 14" unless manifest.dig("compatibility", "maximum") == "14"
 
   %w[scripts esmodules].each do |forbidden_key|
